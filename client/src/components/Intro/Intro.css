@@ -1,15 +1,15 @@
-.about {
+.intro {
   background-color: #ffffff;
   text-align: center;
   padding: 4rem 1.5rem;
 }
 
-.about-container {
+.intro-container {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.about-title {
+.intro-title {
   font-size: 2rem;
   font-weight: 700;
   color: #111827;
@@ -17,18 +17,18 @@
 }
 
 @media (min-width: 768px) {
-  .about-title {
+  .intro-title {
     font-size: 2.5rem;
   }
 }
 
-.about-subtitle {
+.intro-subtitle {
   font-size: 1rem;
   color: #4b5563;
   margin-bottom: 2rem;
 }
 
-.about-button {
+.intro-button {
   border: 1px solid #111827;
   color: #111827;
   background-color: transparent;
@@ -39,7 +39,7 @@
   font-weight: 500;
 }
 
-.about-button:hover {
+.intro-button:hover {
   background-color: #111827;
   color: #ffffff;
 }

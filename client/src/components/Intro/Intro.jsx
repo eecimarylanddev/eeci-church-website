@@ -2,15 +2,15 @@ import './Intro.css';
 
 export function Intro() {
   return (
-    <section className="about">
-      <div className="about-container">
-        <h1 className="about-title">
+    <section className="intro">
+      <div className="intro-container">
+        <h1 className="intro-title">
           Ethiopian Evangelical Church International
         </h1>
-        <p className="about-subtitle">
+        <p className="intro-subtitle">
           You are so special and God LOVES you so much!
         </p>
-        <button className="about-button">I'M NEW</button>
+        <button className="intro-button">I'M NEW</button>
       </div>
     </section>
   );

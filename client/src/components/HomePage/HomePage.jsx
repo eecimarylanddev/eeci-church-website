@@ -2,6 +2,7 @@ import { Intro } from '../Intro';
 import { Sermon } from '../Sermon';
 import { About } from '../About';
 import { Beliefs } from '../Beliefs';
+import { Verse } from '../Verse';
 
 export function HomePage() {
   return (
@@ -14,6 +15,7 @@ export function HomePage() {
       />
       <About />
       <Beliefs />
+      <Verse />
     </>
   );
 }

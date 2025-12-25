@@ -1,6 +1,9 @@
+import { useSiteSettingsContext } from '../../contexts';
 import './Beliefs.css';
 
 export function Beliefs() {
+  const { beliefsText, loading } = useSiteSettingsContext();
+
   return (
     <section className="beliefs">
       <div className="beliefs-container">
@@ -10,11 +13,8 @@ export function Beliefs() {
         <h1 className="beliefs-title">
           Our Beliefs
         </h1>
-        <p className="beliefs-content">
-          We are a Bible-believing church committed to the historic creeds
-          of the Christian faith and the Gospel of Jesus Christ. Our mission
-          is to inspire, equip, and create a space for living out our faith 
-          in community.
+        <p className="beliefs-content" style={{ opacity: loading ? 0.7 : 1 }}>
+          {beliefsText}
         </p>
         <button className="beliefs-button">LEARN MORE</button>
       </div>

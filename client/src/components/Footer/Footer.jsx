@@ -1,29 +1,32 @@
+import { useSiteSettingsContext } from '../../contexts';
 import './Footer.css';
 
 export function Footer() {
+  const { giveLink, facebookUrl, youtubeUrl, tiktokUrl, loading } = useSiteSettingsContext();
+
   return (
     <footer className="footer">
       <div className="footer-title">
         <p>Connect with us.</p>
       </div>
-      <div className="footer-socials">
+      <div className="footer-socials" style={{ opacity: loading ? 0.7 : 1 }}>
         <a
           className="social-facebook"
-          href="https://www.facebook.com/people/Ethio-Emmanuel/pfbid07LJ4r13DdRn5MSNFCr7YjPLW95xyZD95ss5AR9s8WjUJX7hpk18rQFDV8CHMukhLl/"
+          href={facebookUrl}
           target="_blank"
         >
           <i className="icon facebook"></i>
         </a>
         <a
           className="social-youtube"
-          href="https://www.youtube.com/channel/UCljj-pkGW1Adn2ZOrib3RkA"
+          href={youtubeUrl}
           target="_blank"
         >
           <i className="icon youtube"></i>
         </a>
         <a
           className="social-tiktok"
-          href="https://www.tiktok.com/@eecimaryland"
+          href={tiktokUrl}
           target="_blank"
         >
           <i className="icon tiktok"></i>
@@ -38,8 +41,9 @@ export function Footer() {
         </a>
         <a
           className="page-link"
-          href="https://giving.myamplify.io/app/giving/setota"
+          href={giveLink}
           target="_blank"
+          style={{ opacity: loading ? 0.7 : 1 }}
         >
           Give
         </a>

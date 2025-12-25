@@ -1,7 +1,10 @@
 import eeciLogo from '../../assets/eeci-logo.PNG';
+import { useSiteSettingsContext } from '../../contexts';
 import './Navbar.css';
 
 export function Navbar() {
+  const { giveLink, loading } = useSiteSettingsContext();
+
   return (
     <header className="header">
       <nav className="nav-bar">
@@ -17,8 +20,9 @@ export function Navbar() {
           </li>
           <li>
             <a
-              href="https://giving.myamplify.io/app/giving/setota"
+              href={giveLink}
               target="_blank"
+              style={{ opacity: loading ? 0.7 : 1 }}
             >
               <button className="nav-button">Give</button>
             </a>

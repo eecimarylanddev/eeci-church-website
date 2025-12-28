@@ -1,5 +1,5 @@
 import eeciLogo from '../../assets/eeci-logo.PNG';
-import { useSiteSettings } from '../../hooks';
+import { useSiteSettings } from '../../hooks/useSiteSettings';
 import './Navbar.css';
 
 export function Navbar() {

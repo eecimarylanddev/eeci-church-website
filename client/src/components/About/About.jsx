@@ -1,4 +1,4 @@
-import { useSiteSettings } from '../../hooks';
+import { useSiteSettings } from "../../hooks/useSiteSettings";
 import './About.css';
 
 export function About() {

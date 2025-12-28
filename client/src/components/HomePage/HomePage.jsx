@@ -4,7 +4,7 @@ import { About } from '../About';
 import { Beliefs } from '../Beliefs';
 import { Verse } from '../Verse';
 import { Services } from '../Services';
-import { useSiteSettings } from '../../hooks';
+import { useSiteSettings } from '../../hooks/useSiteSettings';
 
 export function HomePage() {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();

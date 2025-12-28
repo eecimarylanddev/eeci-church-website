@@ -1,4 +1,4 @@
-import { useSiteSettings } from '../../hooks';
+import { useSiteSettings } from "../../hooks/useSiteSettings";
 import './Footer.css';
 
 export function Footer() {

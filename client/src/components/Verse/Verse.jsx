@@ -5,7 +5,11 @@ export function Verse() {
     <section className="verse">
       <div className="verse-container">
         <div id="dailyVersesWrapper"></div>
-          <script async defer src="https://dailyverses.net/get/verse.js?language=nkjv"></script>
+        <script
+          async
+          defer
+          src="https://dailyverses.net/get/verse.js?language=nasb"
+        />
       </div>
     </section>
   );

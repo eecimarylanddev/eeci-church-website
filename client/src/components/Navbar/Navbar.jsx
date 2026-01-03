@@ -1,7 +1,10 @@
 import eeciLogo from '../../assets/eeci-logo.PNG';
+import { useSiteSettings } from '../../hooks/useSiteSettings';
 import './Navbar.css';
 
 export function Navbar() {
+  const { data: siteSettings, isLoading, isError } = useSiteSettings();
+
   return (
     <header className="header">
       <nav className="nav-bar">
@@ -16,12 +19,28 @@ export function Navbar() {
             <button className="nav-button">Visit</button>
           </li>
           <li>
-            <a
-              href="https://giving.myamplify.io/app/giving/setota"
-              target="_blank"
-            >
-              <button className="nav-button">Give</button>
-            </a>
+            {isError ? (
+              <button
+                className="nav-button"
+                disabled
+                style={{ opacity: 0.5, cursor: 'not-allowed' }}
+              >
+                Give
+              </button>
+            ) : (
+              <a
+                href={siteSettings?.giveLink}
+                target="_blank"
+                style={{
+                  opacity: isLoading ? 0.5 : 1,
+                  pointerEvents: isLoading ? 'none' : 'auto',
+                }}
+              >
+                <button className="nav-button" disabled={isLoading}>
+                  Give
+                </button>
+              </a>
+            )}
           </li>
         </ul>
       </nav>

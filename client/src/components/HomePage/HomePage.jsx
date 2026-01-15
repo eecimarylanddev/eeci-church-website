@@ -29,22 +29,23 @@ export function HomePage() {
           I'M NEW
         </Button>
       </Intro>
+      <About bg="bg.secondary" />
       {isError ? (
         <Box py="8" textAlign="center" color="error">
           <Text>Unable to load latest sermon. Please try again later.</Text>
         </Box>
       ) : (
         <Sermon
+          bg={'bg.primary'}
           subtitle="Latest message"
           title="Watch Our Last Sermon"
           videoId={siteSettings?.latestSermonVideoId}
           loading={isLoading}
         />
       )}
-      <About />
-      <Beliefs />
-      <Services />
-      <Verse />
+      <Beliefs bg="bg.secondary" />
+      <Services bg="bg.primary" />
+      <Verse bg="bg.secondary" />
     </Box>
   );
 }

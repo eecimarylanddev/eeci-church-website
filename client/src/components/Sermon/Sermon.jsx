@@ -7,9 +7,9 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-export function Sermon({ title, subtitle, videoId, loading }) {
+export function Sermon({ bg, title, subtitle, videoId, loading }) {
   return (
-    <Box as="section" bg="bg.secondary" py="16" px="6" textAlign="center">
+    <Box as="section" bg={bg} py="16" px="6" textAlign="center">
       <Container maxW="900px">
         <Text
           textTransform="uppercase"

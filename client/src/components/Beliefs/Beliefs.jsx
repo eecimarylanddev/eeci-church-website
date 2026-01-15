@@ -8,11 +8,11 @@ import {
 } from '@chakra-ui/react';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
 
-export function Beliefs() {
+export function Beliefs({ bg }) {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
 
   return (
-    <Box as="section" bg="bg.secondary" textAlign="center" py="16" px="6">
+    <Box as="section" bg={bg} textAlign="center" py="16" px="6">
       <Container maxW="800px">
         <Text fontSize="sm" color="text.muted" textTransform="uppercase" mb="2">
           WHAT WE BELIEVE

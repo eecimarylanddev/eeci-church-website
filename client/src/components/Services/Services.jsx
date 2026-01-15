@@ -102,9 +102,9 @@ export function InvolvementCardsGrid({ children }) {
   );
 }
 
-export function Services() {
+export function Services({bg}) {
   return (
-    <Box as="section" bg="bg.primary">
+    <Box as="section" bg={bg}>
       <Container maxW="6xl" py="16" px="6">
         <Heading
           as="h2"

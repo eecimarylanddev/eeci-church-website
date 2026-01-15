@@ -1,9 +1,9 @@
 import './Verse.css';
 import { Box, Container } from '@chakra-ui/react';
 
-export function Verse() {
+export function Verse({ bg }) {
   return (
-    <Box as="section" bg="bg.secondary" textAlign="center" py="16" px="6">
+    <Box as="section" bg={bg} textAlign="center" py="16" px="6">
       <Container maxW="800px">
         <div id="dailyVersesWrapper"></div>
         <script

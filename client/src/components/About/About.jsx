@@ -1,11 +1,11 @@
 import { Box, Container, Heading, Text, Skeleton } from '@chakra-ui/react';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
 
-export function About() {
+export function About({ bg }) {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
 
   return (
-    <Box as="section" bg="bg.primary" textAlign="center" py="16" px="6">
+    <Box as="section" bg={bg} textAlign="center" py="16" px="6">
       <Container maxW="800px">
         <Heading
           as="h2"

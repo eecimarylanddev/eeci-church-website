@@ -20,10 +20,6 @@ export function HomePage() {
           variant="outline"
           borderColor="text.primary"
           color="text.primary"
-          px="6"
-          py="5"
-          borderRadius="md"
-          fontWeight="500"
           _hover={{ bg: 'text.primary', color: 'white' }}
         >
           I'M NEW
@@ -36,10 +32,10 @@ export function HomePage() {
         </Box>
       ) : (
         <Sermon
-          bg={'bg.primary'}
+          bg="bg.primary"
           subtitle="Latest message"
           title="Watch Our Last Sermon"
-          videoId={siteSettings?.latestSermonVideoId}
+          sermonPlaylist={siteSettings?.sermonsPlaylist}
           loading={isLoading}
         />
       )}

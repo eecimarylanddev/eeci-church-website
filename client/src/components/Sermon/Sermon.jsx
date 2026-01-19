@@ -6,8 +6,9 @@ import {
   Skeleton,
   Text,
 } from '@chakra-ui/react';
+import { extractPlaylistId } from '../../utils';
 
-export function Sermon({ bg, title, subtitle, videoId, loading }) {
+export function Sermon({ bg, title, subtitle, sermonPlaylist, loading }) {
   return (
     <Box as="section" bg={bg} py="16" px="6" textAlign="center">
       <Container maxW="900px">
@@ -39,9 +40,12 @@ export function Sermon({ bg, title, subtitle, videoId, loading }) {
             boxShadow="lg"
           >
             <iframe
-              src={`https://www.youtube.com/embed/${videoId}`}
+              src={`https://www.youtube.com/embed/videoseries?list=${extractPlaylistId(
+                sermonPlaylist,
+              )}`}
               title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           </AspectRatio>

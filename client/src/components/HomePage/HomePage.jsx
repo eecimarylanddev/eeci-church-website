@@ -1,3 +1,4 @@
+import { Box, Button, Text } from '@chakra-ui/react';
 import { Intro } from '../Intro';
 import { Sermon } from '../Sermon';
 import { About } from '../About';
@@ -10,29 +11,37 @@ export function HomePage() {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
 
   return (
-    <>
+    <Box>
       <Intro
         title="Emmanuel Evangelical Church International"
         subtitle="You are so special and God LOVES you so much!"
       >
-        <button className="intro-button">I'M NEW</button>
+        <Button
+          variant="outline"
+          borderColor="text.primary"
+          color="text.primary"
+          _hover={{ bg: 'text.primary', color: 'white' }}
+        >
+          I'M NEW
+        </Button>
       </Intro>
+      <About bg="bg.secondary" />
       {isError ? (
-        <div style={{ padding: '2rem', textAlign: 'center', color: '#ff6b6b' }}>
-          <p>Unable to load latest sermon. Please try again later.</p>
-        </div>
+        <Box py="8" textAlign="center" color="error">
+          <Text>Unable to load latest sermon. Please try again later.</Text>
+        </Box>
       ) : (
         <Sermon
+          bg="bg.primary"
           subtitle="Latest message"
-          title="Watch our last sermon"
-          videoId={siteSettings?.latestSermonVideoId}
+          title="Watch Our Last Sermon"
+          sermonPlaylist={siteSettings?.sermonsPlaylist}
           loading={isLoading}
         />
       )}
-      <About />
-      <Beliefs />
-      <Services />
-      <Verse />
-    </>
+      <Beliefs bg="bg.secondary" />
+      <Services bg="bg.primary" />
+      <Verse bg="bg.secondary" />
+    </Box>
   );
 }

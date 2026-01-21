@@ -1,20 +1,56 @@
-import './Sermon.css';
+import {
+  AspectRatio,
+  Box,
+  Container,
+  Heading,
+  Skeleton,
+  Text,
+} from '@chakra-ui/react';
+import { extractPlaylistId } from '../../utils';
 
-export function Sermon({ title, subtitle, videoId, loading }) {
+export function Sermon({ bg, title, subtitle, sermonPlaylist, loading }) {
   return (
-    <section className="sermon">
-      <div className="sermon-container">
-        <p className="sermon-subtitle">{subtitle}</p>
-        <h2 className="sermon-title">{title}</h2>
-        <div className="sermon-video" style={{ opacity: loading ? 0.7 : 1 }}>
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-      </div>
-    </section>
+    <Box as="section" bg={bg} py="16" px="6" textAlign="center">
+      <Container maxW="900px">
+        <Text
+          textTransform="uppercase"
+          fontSize="sm"
+          letterSpacing="wide"
+          color="text.muted"
+          mb="2"
+        >
+          {subtitle}
+        </Text>
+        <Heading
+          as="h2"
+          fontSize="1.75rem"
+          fontWeight="700"
+          color="text.primary"
+          mb="8"
+        >
+          {title}
+        </Heading>
+        {loading ? (
+          <Skeleton height="0" pb="56.25%" borderRadius="lg" />
+        ) : (
+          <AspectRatio
+            ratio={16 / 9}
+            borderRadius="lg"
+            overflow="hidden"
+            boxShadow="lg"
+          >
+            <iframe
+              src={`https://www.youtube.com/embed/videoseries?list=${extractPlaylistId(
+                sermonPlaylist,
+              )}`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </AspectRatio>
+        )}
+      </Container>
+    </Box>
   );
 }

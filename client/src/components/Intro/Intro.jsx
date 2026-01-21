@@ -1,17 +1,24 @@
-import './Intro.css';
+import { Box, Button, Container, Heading, Text } from '@chakra-ui/react';
 
-export function Intro({title, subtitle, children}) {
+export function Intro({ title, subtitle, children }) {
   return (
-    <section className="intro">
-      <div className="intro-container">
-        <h1 className="intro-title">
+    <Box as="section" bg="bg.primary" textAlign="center" py="16" px="6">
+      <Container maxW="800px">
+        <Heading
+          as="h1"
+          fontSize={{ base: '2rem', md: '2.5rem' }}
+          fontWeight="700"
+          lineHeight="normal"
+          color="text.primary"
+          mb="4"
+        >
           {title}
-        </h1>
-        <p className="intro-subtitle">
+        </Heading>
+        <Text fontSize="md" color="text.secondary" mb="8">
           {subtitle}
-        </p>
+        </Text>
         {children}
-      </div>
-    </section>
+      </Container>
+    </Box>
   );
 }

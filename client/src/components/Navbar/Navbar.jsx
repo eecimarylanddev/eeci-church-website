@@ -41,7 +41,7 @@ export function Navbar() {
                 }
               }}
             >
-              Give <FaDonate />
+              Give
             </Link>
           </Button>
         </HStack>

@@ -1,7 +1,6 @@
 import { Box, Button, Flex, HStack, Image, Link } from '@chakra-ui/react';
 import eeciLogo from '../../assets/eeci-logo.PNG';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
-import { FaDonate } from 'react-icons/fa';
 
 export function Navbar() {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();

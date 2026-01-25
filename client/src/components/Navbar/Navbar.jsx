@@ -1,6 +1,7 @@
 import { Box, Button, Flex, HStack, Image, Link } from '@chakra-ui/react';
 import eeciLogo from '../../assets/eeci-logo.PNG';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
+import { NAVIGATION_LINKS } from '../../constants';
 
 export function Navbar() {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
@@ -20,8 +21,11 @@ export function Navbar() {
           <Image alt="EECI" src={eeciLogo} h="60px" w="auto" />
         </Link>
         <HStack as="ul" listStyleType="none" gap="8">
-          <Link href="/about">About</Link>
-          <Link href="/visit">Visit</Link>
+          {NAVIGATION_LINKS.map(({ label, href }) => (
+            <Link key={label} href={href}>
+              {label}
+            </Link>
+          ))}
           <Button
             asChild
             fontWeight="500"

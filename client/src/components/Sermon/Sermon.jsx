@@ -12,6 +12,8 @@ export function Sermon({ bg, title, subtitle, sermonPlaylist, loading }) {
   return (
     <Box as="section" bg={bg} py="16" px="6" textAlign="center">
       <Container maxW="900px">
+        {' '}
+        {/* md size */}
         <Text
           textTransform="uppercase"
           fontSize="sm"

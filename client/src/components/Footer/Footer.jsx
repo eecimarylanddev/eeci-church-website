@@ -1,9 +1,17 @@
-import { Box, Flex, HStack, IconButton, Link, Text } from '@chakra-ui/react';
-import { FaFacebookF, FaYoutube, FaTiktok } from 'react-icons/fa6';
+import { Box, HStack, Link, Text } from '@chakra-ui/react';
+import { FaFacebook, FaYoutube, FaTiktok } from 'react-icons/fa6';
+import { SocialIconButton } from '../ui';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
+import { NAVIGATION_LINKS, CHURCH_INFO, ERROR_MESSAGES } from '../../constants';
 
 export function Footer() {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
+
+  const socialLinks = [
+    { href: siteSettings?.facebookUrl, icon: FaFacebook, label: 'Facebook' },
+    { href: siteSettings?.youtubeUrl, icon: FaYoutube, label: 'YouTube' },
+    { href: siteSettings?.tiktokUrl, icon: FaTiktok, label: 'TikTok' },
+  ];
 
   return (
     <Box as="footer" textAlign="center" py="8" px="6">
@@ -12,67 +20,32 @@ export function Footer() {
       </Text>
       {isError ? (
         <Box py="4" color="error" fontSize="sm">
-          <Text>Unable to load social links</Text>
+          <Text>{ERROR_MESSAGES.socialLinks}</Text>
         </Box>
       ) : (
         <>
           <HStack justify="center" gap="5" opacity={isLoading ? 0.5 : 1}>
-            <Link
-              href={siteSettings?.facebookUrl}
-              target="_blank"
-              aria-disabled={isLoading}
-            >
-              <IconButton
-                aria-label="Facebook"
-                rounded="full"
-                bg="black"
-                color="white"
-                size="sm"
-                _hover={{ bg: 'gray.700' }}
-              >
-                <FaFacebookF />
-              </IconButton>
-            </Link>
-            <Link
-              href={siteSettings?.youtubeUrl}
-              target="_blank"
-              aria-disabled={isLoading}
-            >
-              <IconButton
-                aria-label="YouTube"
-                rounded="full"
-                bg="black"
-                color="white"
-                size="sm"
-                _hover={{ bg: 'gray.700' }}
-              >
-                <FaYoutube />
-              </IconButton>
-            </Link>
-            <Link
-              href={siteSettings?.tiktokUrl}
-              target="_blank"
-              aria-disabled={isLoading}
-            >
-              <IconButton
-                aria-label="TikTok"
-                rounded="full"
-                bg="black"
-                color="white"
-                size="sm"
-                _hover={{ bg: 'gray.700' }}
-              >
-                <FaTiktok />
-              </IconButton>
-            </Link>
+            {socialLinks.map(({ href, icon, label }) => (
+              <SocialIconButton
+                key={label}
+                href={href}
+                icon={icon}
+                label={label}
+                disabled={isLoading}
+              />
+            ))}
           </HStack>
           <HStack justify="center" gap="8" my="10">
-            <Link href="/about" color="text.secondary" textDecoration="none">
-              About
-            </Link>
-            <Link href="/" color="text.secondary" textDecoration="none">
-              Visit
-            </Link>
+            {NAVIGATION_LINKS.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                color="text.secondary"
+                textDecoration="none"
+              >
+                {label}
+              </Link>
+            ))}
             <Link
               href={siteSettings?.giveLink}
               target="_blank"
@@ -87,7 +60,7 @@ export function Footer() {
         </>
       )}
       <Text color="text.secondary" fontSize="sm">
-        © 2026 EECI
+        © {CHURCH_INFO.copyrightYear} {CHURCH_INFO.name}
       </Text>
     </Box>
   );

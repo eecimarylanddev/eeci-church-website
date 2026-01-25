@@ -2,8 +2,7 @@
  * Default site settings used as fallback when Contentful data is unavailable
  */
 export const DEFAULT_SITE_SETTINGS = {
-  giveLink:
-    'https://giving.myamplify.io/app/giving/setota',
+  giveLink: 'https://giving.myamplify.io/app/giving/setota',
   latestSermonUrl: 'https://www.youtube.com/embed/bngvT0n4ur0',
   sermonsPlaylist:
     'https://www.youtube.com/playlist?list=PL9E02JY5UQ6lney64LW31cxant-Ek_jvt',
@@ -13,4 +12,34 @@ export const DEFAULT_SITE_SETTINGS = {
     'https://www.facebook.com/people/Ethio-Emmanuel/pfbid07LJ4r13DdRn5MSNFCr7YjPLW95xyZD95ss5AR9s8WjUJX7hpk18rQFDV8CHMukhLl/',
   youtubeUrl: 'https://www.youtube.com/channel/UCljj-pkGW1Adn2ZOrib3RkA',
   tiktokUrl: 'https://www.tiktok.com/@eecimaryland',
+};
+
+/**
+ * Navigation links used in Navbar and Footer
+ */
+export const NAVIGATION_LINKS = [
+  { label: 'About', href: '/about' },
+  { label: 'Visit', href: '/visit' },
+];
+
+/**
+ * Church information constants
+ */
+export const CHURCH_INFO = {
+  name: 'EECI',
+  fullName: 'Emmanuel Evangelical Church International',
+  address: '1010 Saters Ln, Timonium, MD 21093',
+  mapsUrl: 'https://maps.app.goo.gl/AEq7Aw1tntVbsJ5dA',
+  serviceTimes: '1 PM - 3 PM',
+  copyrightYear: new Date().getFullYear(),
+};
+
+/**
+ * Standardized error messages
+ */
+export const ERROR_MESSAGES = {
+  generic: 'Unable to load content. Please try again later.',
+  socialLinks: 'Unable to load social links.',
+  sermon: 'Unable to load latest sermon. Please try again later.',
+  values: 'Unable to load values. Please try again later.',
 };

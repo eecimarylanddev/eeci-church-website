@@ -1,7 +1,5 @@
 import {
   Box,
-  Button,
-  Card,
   Container,
   Heading,
   SimpleGrid,
@@ -17,7 +15,9 @@ import {
   FaPeopleGroup,
   FaHandsPraying,
 } from 'react-icons/fa6';
+import { FeatureCard, OutlineButton } from '../ui';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
+import { ERROR_MESSAGES } from '../../constants';
 
 // icon name in Contentful -> react icon
 const iconMap = {
@@ -33,35 +33,11 @@ function ValueCard({ icon, title, description }) {
   const IconComponent = icon ? iconMap[icon] : null;
 
   return (
-    <Card.Root
-      h="100%"
-      p="8"
-      borderRadius="card"
-      boxShadow="sm"
-      transition="box-shadow 350ms ease"
-      _hover={{ boxShadow: 'lg' }}
-    >
-      <Card.Body>
-        <VStack align="center" textAlign="center" gap="4">
-          {IconComponent && (
-            <Box color="text.primary">
-              <IconComponent size={48} />
-            </Box>
-          )}
-          <Heading
-            as="h3"
-            fontSize="1.25rem"
-            fontWeight="650"
-            color="text.primary"
-          >
-            {title}
-          </Heading>
-          <Text fontSize="md" color="text.muted" lineHeight="1.7">
-            {description}
-          </Text>
-        </VStack>
-      </Card.Body>
-    </Card.Root>
+    <FeatureCard
+      icon={IconComponent && <IconComponent size={48} />}
+      title={title}
+      description={description}
+    />
   );
 }
 
@@ -96,7 +72,8 @@ export function OurMission({ bg }) {
             ) : isError ? (
               'To know Christ and to make Him known'
             ) : (
-              siteSettings?.missionTagline || 'To know Christ and to make Him known'
+              siteSettings?.missionTagline ||
+              'To know Christ and to make Him known'
             )}
           </Heading>
         </VStack>
@@ -114,12 +91,22 @@ export function OurMission({ bg }) {
           </Heading>
           {isError ? (
             <Text color="error" fontStyle="italic">
-              Unable to load content. Please try again later.
+              {ERROR_MESSAGES.generic}
             </Text>
           ) : isLoading ? (
-            <Skeleton height="100px" width="100%" maxW="800px" borderRadius="md" />
+            <Skeleton
+              height="100px"
+              width="100%"
+              maxW="800px"
+              borderRadius="md"
+            />
           ) : (
-            <Text fontSize="md" color="text.secondary" lineHeight="1.8" maxW="800px">
+            <Text
+              fontSize="md"
+              color="text.secondary"
+              lineHeight="1.8"
+              maxW="800px"
+            >
               {siteSettings?.historyText}
             </Text>
           )}
@@ -139,16 +126,24 @@ export function OurMission({ bg }) {
 
         {isError ? (
           <Text color="error" fontStyle="italic" textAlign="center" mb="16">
-            Unable to load values. Please try again later.
+            {ERROR_MESSAGES.values}
           </Text>
         ) : isLoading ? (
-          <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }} mb="16">
+          <SimpleGrid
+            columns={{ base: 1, md: 3 }}
+            gap={{ base: 6, md: 8 }}
+            mb="16"
+          >
             {[1, 2, 3].map((i) => (
               <Skeleton key={i} height="200px" borderRadius="card" />
             ))}
           </SimpleGrid>
         ) : (
-          <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }} mb="16">
+          <SimpleGrid
+            columns={{ base: 1, md: 3 }}
+            gap={{ base: 6, md: 8 }}
+            mb="16"
+          >
             {values.map((value, index) => (
               <ValueCard
                 key={index}
@@ -173,27 +168,22 @@ export function OurMission({ bg }) {
           </Heading>
           {isError ? (
             <Text color="error" fontStyle="italic" mb="6">
-              Unable to load content. Please try again later.
+              {ERROR_MESSAGES.generic}
             </Text>
           ) : isLoading ? (
-            <Skeleton height="60px" width="100%" maxW="700px" borderRadius="md" mb="6" />
+            <Skeleton
+              height="60px"
+              width="100%"
+              maxW="700px"
+              borderRadius="md"
+              mb="6"
+            />
           ) : (
             <Text fontSize="md" color="text.secondary" maxW="700px" mb="6">
               {siteSettings?.beliefsText}
             </Text>
           )}
-          <Button
-            variant="outline"
-            borderColor="text.primary"
-            color="text.primary"
-            px="6"
-            py="5"
-            borderRadius="md"
-            fontWeight="500"
-            _hover={{ bg: 'text.primary', color: 'white' }}
-          >
-            STATEMENT OF FAITH
-          </Button>
+          <OutlineButton>STATEMENT OF FAITH</OutlineButton>
         </VStack>
       </Container>
     </Box>

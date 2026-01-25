@@ -1,33 +1,22 @@
-import { Box, Container, Heading, Text, Skeleton } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
+import { Section } from '../ui';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
+import { ERROR_MESSAGES } from '../../constants';
 
 export function About({ bg }) {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
 
   return (
-    <Box as="section" bg={bg} textAlign="center" py="16" px="6">
-      <Container maxW="800px">
-        <Heading
-          as="h2"
-          fontSize="2rem"
-          fontWeight="700"
-          color="text.primary"
-          mb="4"
-        >
-          About Our Church
-        </Heading>
-        {isError ? (
-          <Text color="error" fontStyle="italic">
-            Unable to load content. Please try again later.
-          </Text>
-        ) : isLoading ? (
-          <Skeleton height="60px" borderRadius="md" />
-        ) : (
-          <Text fontSize="md" color="text.secondary">
-            {siteSettings?.aboutText}
-          </Text>
-        )}
-      </Container>
-    </Box>
+    <Section
+      bg={bg}
+      title="About Our Church"
+      isLoading={isLoading}
+      isError={isError}
+      errorMessage={ERROR_MESSAGES.generic}
+    >
+      <Text fontSize="md" color="text.secondary">
+        {siteSettings?.aboutText}
+      </Text>
+    </Section>
   );
 }

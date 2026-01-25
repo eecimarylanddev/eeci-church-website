@@ -1,11 +1,12 @@
 import { Box, Button, Text } from '@chakra-ui/react';
-import { Intro } from '../Intro';
-import { Sermon } from '../Sermon';
-import { About } from '../About';
-import { Beliefs } from '../Beliefs';
-import { Verse } from '../Verse';
-import { Services } from '../Services';
+import { Intro } from '../../components/Intro';
+import { Sermon } from '../../components/Sermon';
+import { About } from '../../components/About';
+import { Beliefs } from '../../components/Beliefs';
+import { Verse } from '../../components/Verse';
+import { Services } from '../../components/Services';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
+import { OutlineButton } from '../../components/ui';
 
 export function HomePage() {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
@@ -17,17 +18,7 @@ export function HomePage() {
         subtitle="You are so special and God LOVES you so much!"
         backgroundImage={siteSettings?.backgroundImage}
       >
-        <Button
-          variant="outline"
-          borderColor={siteSettings?.backgroundImage ? 'white' : 'text.primary'}
-          color={siteSettings?.backgroundImage ? 'white' : 'text.primary'}
-          _hover={{
-            bg: siteSettings?.backgroundImage ? 'white' : 'text.primary',
-            color: siteSettings?.backgroundImage ? 'gray.800' : 'white',
-          }}
-        >
-          I'M NEW
-        </Button>
+        <OutlineButton inverted>I'M NEW</OutlineButton>
       </Intro>
       <About bg="bg.secondary" />
       {isError ? (

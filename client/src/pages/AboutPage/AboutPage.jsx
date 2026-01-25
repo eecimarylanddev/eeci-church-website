@@ -1,5 +1,5 @@
-import { Intro } from '../Intro';
-import { OurMission } from '../OurMission';
+import { Intro } from '../../components/Intro';
+import { OurMission } from '../../components/OurMission';
 
 export function AboutPage() {
   return (

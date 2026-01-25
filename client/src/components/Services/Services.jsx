@@ -1,9 +1,7 @@
 import {
   Box,
-  Card,
   Container,
   Heading,
-  HStack,
   Icon,
   Link,
   SimpleGrid,
@@ -16,93 +14,25 @@ import {
   FaPeopleGroup,
   FaHandHoldingHeart,
 } from 'react-icons/fa6';
+import { FeatureCard } from '../ui';
+import { CHURCH_INFO } from '../../constants';
 
-export function InvolvementCard({
-  icon,
-  title,
-  meta,
-  children,
-  locationLabel,
-  cta,
-}) {
+function LocationInfo() {
   return (
-    <Card.Root
-      h="100%"
-      p="10"
-      borderRadius="card"
-      boxShadow="sm"
-      transition="box-shadow 350ms ease"
-      _hover={{ boxShadow: 'lg' }}
-    >
-      <Card.Body>
-        <VStack align="center" textAlign="center" gap="0">
-          {icon && (
-            <Box color="text.primary" mb="6">
-              {icon}
-            </Box>
-          )}
-
-          <Heading
-            as="h3"
-            fontSize="1.5rem"
-            fontWeight="650"
-            color="text.primary"
-            letterSpacing="-0.01em"
-          >
-            {title}
-          </Heading>
-
-          {meta && (
-            <Text mt="3" fontSize="md" color="text.muted">
-              {meta}
-            </Text>
-          )}
-
-          {locationLabel && (
-            <VStack mt="6" gap="2" fontWeight="700" color="text.primary">
-              <Icon as={FaLocationDot} boxSize="4" />
-              <Link
-                href="https://maps.app.goo.gl/AEq7Aw1tntVbsJ5dA"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                {locationLabel}
-              </Link>
-            </VStack>
-          )}
-
-          {children && (
-            <Text mt="5" fontSize="md" lineHeight="1.7" color="text.muted">
-              {children}
-            </Text>
-          )}
-
-          {cta && (
-            <Text
-              mt="10"
-              fontSize="sm"
-              fontWeight="800"
-              letterSpacing="0.14em"
-              color="brand.600"
-            >
-              {cta}
-            </Text>
-          )}
-        </VStack>
-      </Card.Body>
-    </Card.Root>
+    <VStack mt="6" gap="2" fontWeight="700" color="text.primary">
+      <Icon as={FaLocationDot} boxSize="4" />
+      <Link
+        href={CHURCH_INFO.mapsUrl}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {CHURCH_INFO.address}
+      </Link>
+    </VStack>
   );
 }
 
-export function InvolvementCardsGrid({ children }) {
-  return (
-    <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }}>
-      {children}
-    </SimpleGrid>
-  );
-}
-
-export function Services({bg}) {
+export function Services({ bg }) {
   return (
     <Box as="section" bg={bg}>
       <Container maxW="6xl" py="16" px="6">
@@ -116,30 +46,35 @@ export function Services({bg}) {
         >
           Get Involved
         </Heading>
-        <InvolvementCardsGrid>
-          <InvolvementCard
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }}>
+          <FeatureCard
             icon={<FaChurch size={64} />}
             title="Sunday Worship"
-            meta="1 PM - 3 PM"
-            locationLabel="1010 Saters Ln, Timonium, MD 21093"
-          />
+            meta={CHURCH_INFO.serviceTimes}
+            padding="10"
+            titleSize="1.5rem"
+          >
+            <LocationInfo />
+          </FeatureCard>
 
-          <InvolvementCard
+          <FeatureCard
             icon={<FaPeopleGroup size={64} />}
             title="Join a Group"
+            description="Find community and grow in your faith with others."
             cta="FIND A GROUP"
-          >
-            Find community and grow in your faith with others.
-          </InvolvementCard>
+            padding="10"
+            titleSize="1.5rem"
+          />
 
-          <InvolvementCard
+          <FeatureCard
             icon={<FaHandHoldingHeart size={64} />}
             title="Serve"
+            description="Use your gifts to make a difference in the lives of those you touch."
             cta="GET INVOLVED"
-          >
-            Use your gifts to make a difference in the lives of those you touch.
-          </InvolvementCard>
-        </InvolvementCardsGrid>
+            padding="10"
+            titleSize="1.5rem"
+          />
+        </SimpleGrid>
       </Container>
     </Box>
   );

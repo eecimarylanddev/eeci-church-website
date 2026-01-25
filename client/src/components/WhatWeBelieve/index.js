@@ -1,0 +1,1 @@
+export { WhatWeBelieve } from './WhatWeBelieve';

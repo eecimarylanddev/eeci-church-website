@@ -38,7 +38,6 @@ export function Section({
   return (
     <Box as="section" bg={bg} textAlign={textAlign} py={py} px={px}>
       <Container maxW={maxW}>
-        {/* Optional label above heading */}
         {label && (
           <Text
             fontSize="sm"
@@ -51,20 +50,18 @@ export function Section({
           </Text>
         )}
 
-        {/* Optional heading */}
         {title && (
           <Heading
             as={headingAs}
             fontSize={headingSize}
             fontWeight="700"
             color="text.primary"
-            mb="4"
+            mb="6"
           >
             {title}
           </Heading>
         )}
 
-        {/* Content with loading/error states */}
         {isError ? (
           <Text color="error" fontStyle="italic">
             {errorMessage}

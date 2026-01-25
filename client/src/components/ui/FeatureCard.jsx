@@ -42,18 +42,8 @@ export function FeatureCard({
             {title}
           </Heading>
 
-          {meta && (
-            <Text fontSize="md" color="text.muted">
-              {meta}
-            </Text>
-          )}
-
-          {description && (
-            <Text fontSize="md" color="text.muted" lineHeight="1.7">
-              {description}
-            </Text>
-          )}
-
+          {meta && <Text color="text.muted">{meta}</Text>}
+          {description && <Text color="text.muted">{description}</Text>}
           {children}
 
           {cta && (
@@ -61,7 +51,7 @@ export function FeatureCard({
               mt="6"
               fontSize="sm"
               fontWeight="800"
-              letterSpacing="0.14em"
+              letterSpacing="0.10em"
               color="brand.600"
             >
               {cta}

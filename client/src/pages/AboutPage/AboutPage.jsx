@@ -1,14 +1,20 @@
+import { Box } from '@chakra-ui/react';
 import { Intro } from '../../components/Intro';
-import { OurMission } from '../../components/OurMission';
+import { Vision } from '../../components/Vision';
+import { CoreValues } from '../../components/CoreValues';
+import { WhatWeTeach } from '../../components/WhatWeTeach';
+import { WhatWeBelieve } from '../../components/WhatWeBelieve';
 
 export function AboutPage() {
   return (
-    <>
+    <Box>
       <Intro
         title="About Us"
-        subtitle="Learn more about our church, our mission, and what we believe."
+        subtitle="Learn more about our vision, our values, and what we teach."
       />
-      <OurMission bg="bg.secondary" />
-    </>
+      <Vision bg="bg.secondary" />
+      <CoreValues bg="bg.primary" />
+      <WhatWeTeach bg="bg.secondary" />
+    </Box>
   );
 }

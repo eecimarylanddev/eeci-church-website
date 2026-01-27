@@ -14,12 +14,12 @@ export function Footer() {
   ];
 
   return (
-    <Box as="footer" textAlign="center" py="8" px="6">
-      <Text fontWeight="bold" mb="4">
+    <Box as="footer" textAlign="center" paddingY="8" paddingX="6">
+      <Text fontWeight="bold" marginBottom="4">
         Connect with us.
       </Text>
       {isError ? (
-        <Box py="4" color="error" fontSize="sm">
+        <Box paddingY="4" color="error" fontSize="sm">
           <Text>{ERROR_MESSAGES.socialLinks}</Text>
         </Box>
       ) : (
@@ -35,7 +35,7 @@ export function Footer() {
               />
             ))}
           </HStack>
-          <HStack justify="center" gap="8" my="10">
+          <HStack justify="center" gap="8" marginY="10">
             {NAVIGATION_LINKS.map(({ label, href }) => (
               <Link
                 key={label}

@@ -17,8 +17,8 @@ const containerSizes = {
 export function Section({
   bg,
   size = 'sm',
-  py = '16',
-  px = '6',
+  paddingY = '16',
+  paddingX = '6',
   textAlign = 'center',
   // Heading props
   title,
@@ -32,18 +32,24 @@ export function Section({
   // Content
   children,
 }) {
-  const maxW = containerSizes[size] || size;
+  const maxWidth = containerSizes[size] || size;
 
   return (
-    <Box as="section" bg={bg} textAlign={textAlign} py={py} px={px}>
-      <Container maxW={maxW}>
+    <Box
+      as="section"
+      background={bg}
+      textAlign={textAlign}
+      paddingY={paddingY}
+      paddingX={paddingX}
+    >
+      <Container maxWidth={maxWidth}>
         {title && (
           <Heading
             as={headingAs}
             fontSize={headingSize}
             fontWeight="700"
             color="text.primary"
-            mb="6"
+            marginBottom="6"
           >
             {title}
           </Heading>

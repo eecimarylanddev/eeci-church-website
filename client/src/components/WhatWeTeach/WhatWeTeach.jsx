@@ -1,36 +1,9 @@
-import { SimpleGrid, Skeleton, Text } from '@chakra-ui/react';
-import {
-  FaBookBible,
-  FaCross,
-  FaHandHoldingHeart,
-  FaHeart,
-  FaPeopleGroup,
-  FaHandsPraying,
-} from 'react-icons/fa6';
-import { Section, FeatureCard } from '../ui';
+import { Box, Skeleton, Text, VStack, Heading } from '@chakra-ui/react';
+import { Section } from '../ui';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
 import { ERROR_MESSAGES } from '../../constants';
-
-const iconMap = {
-  bible: FaBookBible,
-  cross: FaCross,
-  heart: FaHeart,
-  hands: FaHandHoldingHeart,
-  people: FaPeopleGroup,
-  prayer: FaHandsPraying,
-};
-
-function ValueCard({ icon, title, description }) {
-  const IconComponent = icon ? iconMap[icon] : null;
-
-  return (
-    <FeatureCard
-      icon={IconComponent && <IconComponent size={48} />}
-      title={title}
-      description={description}
-    />
-  );
-}
+import { Carousel, IconButton } from '@chakra-ui/react';
+import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 
 export function WhatWeTeach({ bg }) {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
@@ -44,26 +17,53 @@ export function WhatWeTeach({ bg }) {
       isLoading={isLoading}
       isError={isError}
       errorMessage={ERROR_MESSAGES.values}
-      skeletonHeight="200px"
+      skeletonHeight="300px"
     >
-      {isLoading ? (
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }}>
-          {[1, 2, 3].map((i) => (
-            <Skeleton key={i} height="200px" borderRadius="card" />
-          ))}
-        </SimpleGrid>
-      ) : (
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 8 }}>
+      <Carousel.Root slideCount={values.length} maxWidth="lg" marginX="auto">
+        <Carousel.ItemGroup overflow="overlay">
           {values.map((value, index) => (
-            <FeatureCard
-              key={index}
-              icon={value.icon}
-              title={value.title}
-              description={value.description}
-            />
+            <Carousel.Item key={index} index={index}>
+              <Box
+                borderWidth="1.5px"
+                borderColor="border.default"
+                borderRadius="lg"
+                overflow="hidden"
+                height="100%"
+              >
+                <VStack gap="4" paddingX="8" paddingY="12" textAlign="center">
+                  <Heading
+                    as="h4"
+                    fontSize="1.5rem"
+                    fontWeight="600"
+                    color="text.primary"
+                  >
+                    {value.title}
+                  </Heading>
+                  <Text color="text.secondary" fontSize="md">
+                    {value.description}
+                  </Text>
+                </VStack>
+              </Box>
+            </Carousel.Item>
           ))}
-        </SimpleGrid>
-      )}
+        </Carousel.ItemGroup>
+
+        <Carousel.Control justifyContent="center" gap="4" marginTop="6">
+          <Carousel.PrevTrigger asChild>
+            <IconButton size="sm" variant="outline">
+              <LuChevronLeft />
+            </IconButton>
+          </Carousel.PrevTrigger>
+
+          <Carousel.Indicators />
+
+          <Carousel.NextTrigger asChild>
+            <IconButton size="sm" variant="outline">
+              <LuChevronRight />
+            </IconButton>
+          </Carousel.NextTrigger>
+        </Carousel.Control>
+      </Carousel.Root>
     </Section>
   );
 }

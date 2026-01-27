@@ -15,7 +15,7 @@ export function Beliefs({ bg }) {
       isError={isError}
       errorMessage={ERROR_MESSAGES.generic}
     >
-      <Text fontSize="md" color="text.secondary" mb="8">
+      <Text fontSize="md" color="text.secondary" marginBottom="8">
         {siteSettings?.beliefsText}
       </Text>
       <OutlineButton>LEARN MORE</OutlineButton>

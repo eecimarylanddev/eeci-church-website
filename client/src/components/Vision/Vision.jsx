@@ -5,7 +5,7 @@ import { useSiteSettings } from '../../hooks/useSiteSettings';
 import { ERROR_MESSAGES } from '../../constants';
 
 const markdownStyles = {
-  p: ({ children }) => <Text mb="4">{children}</Text>,
+  p: ({ children }) => <Text marginBottom="4">{children}</Text>,
   ul: ({ children }) => (
     <ul style={{ paddingLeft: '1.5rem', marginBottom: '1rem' }}>{children}</ul>
   ),

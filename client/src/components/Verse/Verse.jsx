@@ -2,8 +2,14 @@ import { Box, Container } from '@chakra-ui/react';
 
 export function Verse({ bg }) {
   return (
-    <Box as="section" bg={bg} textAlign="center" py="16" px="6">
-      <Container maxW="800px">
+    <Box
+      as="section"
+      background={bg}
+      textAlign="center"
+      paddingY="16"
+      paddingX="6"
+    >
+      <Container maxWidth="800px">
         <Box
           css={{
             '& .dailyVerses.bibleText': {

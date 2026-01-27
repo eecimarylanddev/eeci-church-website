@@ -11,14 +11,20 @@ export function Navbar() {
       as="header"
       position="sticky"
       top="0"
-      w="100%"
-      bg="white"
+      width="100%"
+      background="white"
       zIndex="1000"
       boxShadow="0 2px 1px rgba(185, 185, 185, 0.2)"
     >
-      <Flex as="nav" mx="auto" px="4" justify="space-between" align="center">
+      <Flex
+        as="nav"
+        marginX="auto"
+        paddingX="4"
+        justify="space-between"
+        align="center"
+      >
         <Link href="/">
-          <Image alt="EECI" src={eeciLogo} h="60px" w="auto" />
+          <Image alt="EECI" src={eeciLogo} height="60px" width="auto" />
         </Link>
         <HStack as="ul" listStyleType="none" gap="8">
           {NAVIGATION_LINKS.map(({ label, href }) => (
@@ -31,7 +37,7 @@ export function Navbar() {
             fontWeight="500"
             borderRadius="md"
             disabled={isLoading || isError}
-            _hover={{ bg: 'text.primary', color: 'white' }}
+            _hover={{ background: 'text.primary', color: 'white' }}
           >
             <Link
               href={siteSettings?.giveLink}

@@ -17,7 +17,7 @@ export function FeatureCard({
   meta,
   cta,
   children,
-  padding = '8',
+  padding = '4',
   titleSize = '1.25rem',
 }) {
   return (

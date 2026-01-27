@@ -6,7 +6,7 @@ export function Sermon({ bg, title, sermonPlaylist, loading }) {
   return (
     <Section bg={bg} size="lg" title={title}>
       {loading ? (
-        <Skeleton height="0" pb="56.25%" borderRadius="lg" />
+        <Skeleton height="0" paddingBottom="56.25%" borderRadius="lg" />
       ) : (
         <AspectRatio
           ratio={16 / 9}

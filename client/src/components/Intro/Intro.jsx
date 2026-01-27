@@ -8,9 +8,9 @@ export function Intro({ title, subtitle, children, backgroundImage }) {
       as="section"
       position="relative"
       textAlign="center"
-      py={{ base: '20', md: '32' }}
-      px="6"
-      minH={hasBackground ? { base: '400px', md: '500px' } : 'auto'}
+      paddingY={{ base: '20', md: '32' }}
+      paddingX="6"
+      minHeight={hasBackground ? { base: '400px', md: '500px' } : 'auto'}
       {...(hasBackground
         ? {
             backgroundImage: `url(${backgroundImage})`,
@@ -19,7 +19,7 @@ export function Intro({ title, subtitle, children, backgroundImage }) {
             backgroundAttachment: { base: 'scroll', md: 'fixed' },
             backgroundRepeat: 'no-repeat',
           }
-        : { bg: 'bg.primary' })}
+        : { background: 'bg.primary' })}
     >
       {/* Dark overlay for readability */}
       {hasBackground && (
@@ -29,18 +29,18 @@ export function Intro({ title, subtitle, children, backgroundImage }) {
           left="0"
           right="0"
           bottom="0"
-          bg="blackAlpha.600"
+          background="blackAlpha.600"
         />
       )}
 
-      <Container maxW="800px" position="relative" zIndex="1">
+      <Container maxWidth="800px" position="relative" zIndex="1">
         <Heading
           as="h1"
           fontSize={{ base: '2rem', md: '2.5rem' }}
           fontWeight="700"
           lineHeight="normal"
           color={hasBackground ? 'white' : 'text.primary'}
-          mb="4"
+          marginBottom="4"
           textShadow={hasBackground ? '0 2px 4px rgba(0,0,0,0.3)' : 'none'}
         >
           {title}
@@ -48,7 +48,7 @@ export function Intro({ title, subtitle, children, backgroundImage }) {
         <Text
           fontSize="md"
           color={hasBackground ? 'whiteAlpha.900' : 'text.secondary'}
-          mb="8"
+          marginBottom="8"
           textShadow={hasBackground ? '0 1px 2px rgba(0,0,0,0.3)' : 'none'}
         >
           {subtitle}

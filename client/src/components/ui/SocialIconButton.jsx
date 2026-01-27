@@ -11,10 +11,10 @@ export function SocialIconButton({ href, icon, label, disabled }) {
       <IconButton
         aria-label={label}
         rounded="full"
-        bg="black"
+        background="black"
         color="white"
         size="sm"
-        _hover={{ bg: 'gray.700' }}
+        _hover={{ background: 'gray.700' }}
       >
         <IconComponent />
       </IconButton>

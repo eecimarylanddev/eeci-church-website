@@ -20,7 +20,7 @@ export function WhatWeTeach({ bg }) {
       <Carousel.Root slideCount={values.length} maxWidth="lg" marginX="auto">
         <Carousel.ItemGroup overflow="overlay">
           {values.map((value, index) => (
-            <Carousel.Item key={index} index={index}>
+            <Carousel.Item key={index} index={index} backgroundColor="white">
               <Box
                 borderWidth="1.5px"
                 borderColor="border.default"

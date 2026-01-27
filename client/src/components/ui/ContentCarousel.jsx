@@ -15,6 +15,7 @@ export function ContentCarousel({ items }) {
           {items.map((item, index) => (
             <Carousel.Item key={index} index={index} backgroundColor="white">
               <Box
+                alignContent="center"
                 borderWidth="1.5px"
                 borderColor="border.default"
                 borderRadius="lg"
@@ -22,14 +23,16 @@ export function ContentCarousel({ items }) {
                 height="100%"
               >
                 <VStack gap="4" paddingX="8" paddingY="12" textAlign="center">
-                  <Heading
-                    as="h4"
-                    fontSize="1.5rem"
-                    fontWeight="600"
-                    color="text.primary"
-                  >
-                    {item.title}
-                  </Heading>
+                  {item.title && (
+                    <Heading
+                      as="h4"
+                      fontSize="1.5rem"
+                      fontWeight="600"
+                      color="text.primary"
+                    >
+                      {item.title}
+                    </Heading>
+                  )}
                   <Text color="text.secondary" fontSize="md">
                     {item.description}
                   </Text>

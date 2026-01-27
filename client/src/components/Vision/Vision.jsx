@@ -11,6 +11,7 @@ export function Vision({ bg }) {
       title="Our Vision"
       introText={ourVisionJson?.visionStatement}
       subtitle="We Seek"
+      subtitleFontSize="xl"
       isLoading={isLoading}
       isError={isError}
       skeletonHeight="300px"

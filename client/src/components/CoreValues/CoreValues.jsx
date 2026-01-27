@@ -39,7 +39,7 @@ export function CoreValues({ bg }) {
     >
       <Box fontSize="md" color="text.secondary" lineHeight="1.8">
         <ReactMarkdown components={markdownStyles}>
-          {siteSettings?.ourCoreValues}
+          {siteSettings?.ourValues}
         </ReactMarkdown>
       </Box>
     </Section>

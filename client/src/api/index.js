@@ -35,8 +35,9 @@ export async function fetchSiteSettings() {
     missionTagline: siteSettings.missionTagline,
     valuesJson: siteSettings.valuesJson,
     historyText: siteSettings.historyText,
-    ourVision: siteSettings.ourVision,
-    ourCoreValues: siteSettings.ourCoreValues,
+    ourVisionJson: siteSettings.ourVisionJson,
+    ourValues: siteSettings.ourValues,
+    teachingsJson: siteSettings.teachingsJson,
     backgroundImage: backgroundImageUrl ? `https:${backgroundImageUrl}` : null,
   };
 }

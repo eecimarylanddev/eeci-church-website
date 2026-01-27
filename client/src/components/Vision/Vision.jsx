@@ -1,47 +1,24 @@
-import { Box, Text } from '@chakra-ui/react';
-import ReactMarkdown from 'react-markdown';
-import { Section } from '../ui';
+import { Section, ContentCarousel } from '../ui';
 import { useSiteSettings } from '../../hooks/useSiteSettings';
-
-const markdownStyles = {
-  p: ({ children }) => <Text marginBottom="4">{children}</Text>,
-  ul: ({ children }) => (
-    <ul style={{ paddingLeft: '1.5rem', marginBottom: '1rem' }}>{children}</ul>
-  ),
-  ol: ({ children }) => (
-    <ol style={{ paddingLeft: '1.5rem', marginBottom: '1rem' }}>{children}</ol>
-  ),
-  li: ({ children }) => (
-    <li
-      style={{
-        marginBottom: '0.5rem',
-        display: 'list-item',
-        listStyleType: 'decimal',
-        listStylePosition: 'inside',
-        fontWeight: 'bold',
-      }}
-    >
-      <span style={{ fontWeight: 'normal' }}>{children}</span>
-    </li>
-  ),
-};
 
 export function Vision({ bg }) {
   const { data: siteSettings, isLoading, isError } = useSiteSettings();
+  const ourVisionJson = siteSettings?.ourVisionJson || [];
 
   return (
     <Section
       bg={bg}
+      size="lg"
       title="Our Vision"
       isLoading={isLoading}
       isError={isError}
-      skeletonHeight="100px"
+      skeletonHeight="300px"
     >
-      <Box fontSize="md" color="text.secondary" lineHeight="1.8">
-        <ReactMarkdown components={markdownStyles}>
-          {siteSettings?.ourVision}
-        </ReactMarkdown>
-      </Box>
+      <ContentCarousel
+        items={ourVisionJson?.visionPoints}
+        introText={ourVisionJson?.visionStatement}
+        carouselHeading="We seek:"
+      />
     </Section>
   );
 }
